@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"github.com/Shopify/sarama"
+	"log"
 )
 
 func main() {
@@ -13,7 +13,7 @@ func main() {
 	config.Version = sarama.V2_3_0_0 // Use a specific Kafka version
 
 	// Create consumer
-	consumer, err := sarama.NewConsumer([]string{"20.25.91.229:9092"}, config)
+	consumer, err := sarama.NewConsumer([]string{"kafka.example.com:9092"}, config)
 	if err != nil {
 		log.Fatalln("Failed to create consumer:", err)
 	}

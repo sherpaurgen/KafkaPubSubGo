@@ -2,14 +2,13 @@ package main
 
 import (
 	"fmt"
-	"log"
-
 	"github.com/Shopify/sarama"
+	"log"
 )
 
 func main() {
-	brokerList := []string{"20.25.91.229:9092"} // Replace with your Kafka broker's address
-	topic := "GuardianOfGalaxyVol1-topic"       // Replace with the topic you want to produce to
+	brokerList := []string{"kafka.example.com:9092"} // Replace with your Kafka broker's address
+	topic := "GuardianOfGalaxyVol1-topic"            // Replace with the topic you want to produce to
 
 	config := sarama.NewConfig()
 	config.Producer.Return.Successes = true
@@ -30,7 +29,9 @@ func main() {
 
 	message := &sarama.ProducerMessage{
 		Topic: topic,
-		Value: sarama.StringEncoder("Hello, World!"), // Replace with the message you want to produce
+		Value: sarama.StringEncoder("Hello, there" +
+			"" +
+			"!"), // Replace with the message you want to produce
 	}
 
 	partition, offset, err := producer.SendMessage(message)
